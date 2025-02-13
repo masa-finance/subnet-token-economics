@@ -43,7 +43,7 @@ Delegate your alpha tokens to Masa's validators:
 ### 2. Stake Your Tokens
 - Minimum stake: 1,500 MASA ($69 at current prices)
 - Visit the MASA Staking Platform
-- Choose staking periods: 3, 6, 9, or 12 months
+- Choose staking periods: 3, 6, or 9 months
 - Supported networks: Ethereum, Base, BNB Chain
 - APY range: 15%-25%
 - Higher rewards for larger stakes and longer periods

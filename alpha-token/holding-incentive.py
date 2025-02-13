@@ -4,14 +4,15 @@ Reward Calculator for Alpha and MASA Token Staking Program
 This module implements a reward calculation system for participants staking both Alpha and MASA tokens.
 The rewards are distributed from a fixed pool of MASA tokens based on:
 - Amount of Alpha tokens staked with time-based multipliers (earlier participants get higher weights)
-- Amount of MASA tokens staked with duration-based multipliers
+- Amount of MASA tokens staked with duration-based multipliers (minimum stake: 1500 MASA)
 - Relative share of total staking pool weight
 
 Program Rules:
 - Program runs for 120 days from launch date
 - Participants can join at any point during the program
 - Alpha staking weight decreases linearly from 1.0 (day 0) to 0.25 (day 120)
-- MASA staking periods are fixed: 3, 6, 9, or 12 months from join date
+- MASA staking periods are fixed: 3, 6, or 9 months from join date
+- Minimum MASA stake amount is 1500 MASA tokens
 - Minimum MASA stake duration is 90 days
 - Each participant is identified by their unique Bittensor hotkey and EVM ECDSA public key
 
@@ -56,7 +57,8 @@ class RewardCalculator:
     TOTAL_REWARD_POOL = Decimal('15000000')  # 15M MASA tokens
     MAX_ALPHA_STAKE_DAYS = 120
     MIN_MASA_STAKE_DAYS = 90
-    VALID_MASA_STAKE_MONTHS = [3, 6, 9, 12]
+    MIN_MASA_STAKE_AMOUNT = Decimal('1500')  # Minimum MASA stake requirement
+    VALID_MASA_STAKE_MONTHS = [3, 6, 9]  # Removed 12 months
     
     def __init__(self, launch_date: date):
         self.participants = {}  # Changed to dict with hotkey as key
@@ -74,7 +76,6 @@ class RewardCalculator:
             3: Decimal('1.0'),   # 15% APY
             6: Decimal('1.2'),   # 20% APY
             9: Decimal('1.5'),   # 25% APY
-            12: Decimal('1.5')   # 25% APY
         }
         return multipliers.get(months, Decimal('0'))
 
@@ -88,6 +89,10 @@ class RewardCalculator:
             return None
             
         if position.masa_stake_months not in self.VALID_MASA_STAKE_MONTHS:
+            return None
+
+        # Check minimum MASA stake requirement
+        if position.masa_staked < self.MIN_MASA_STAKE_AMOUNT:
             return None
 
         # Calculate days since program launch
