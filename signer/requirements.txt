@@ -1,0 +1,3 @@
+bittensor
+eth-account
+substrate-interface 
