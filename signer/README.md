@@ -25,7 +25,7 @@ The script facilitates bidirectional signing, where a Bittensor hotkey signs an 
 
 ### Environment Setup
 
-Ensure you have the necessary Python libraries installed. You can install them using the command: pip install -r requirements.txt
+Ensure you have the necessary Python libraries installed. You can install them using the command: `pip install -r requirements.txt`
 
 ### Running the Script
 
@@ -33,15 +33,15 @@ To generate and verify signatures, use the following commands:
 
 #### Hotkey Signature Generation
 
-To generate a hotkey signature, run: python signer/generate-proof.py --hotkey
+To generate a hotkey signature, run: `python signer/generate-proof.py --hotkey`
 
 #### EVM Address Signature Generation
 
-To generate an EVM address signature, run: python signer/generate-proof.py --eth
+To generate an EVM address signature, run: `python signer/generate-proof.py --eth`
 
 #### Both Hotkey and EVM Address Signature Generation
 
-To generate both hotkey and EVM address signatures, run: python signer/generate-proof.py
+To generate both hotkey and EVM address signatures, run: `python signer/generate-proof.py`
 
 ### Verification
 
@@ -49,15 +49,15 @@ To verify the generated signatures, use the following commands:
 
 #### Verify Hotkey Signature
 
-To verify a hotkey signature, run: python signer/verify-proof.py --hotkey
+To verify a hotkey signature, run: `python signer/verify-proof.py --hotkey`
 
 #### Verify EVM Address Signature
 
-To verify an EVM address signature, run: python signer/verify-proof.py --eth
+To verify an EVM address signature, run: `python signer/verify-proof.py --eth`
 
 #### Verify Both Signatures
 
-To verify both hotkey and EVM address signatures, run: python signer/verify-proof.py
+To verify both hotkey and EVM address signatures, run: `python signer/verify-proof.py`
 
 ## Input/Output Format
 
@@ -77,9 +77,9 @@ To verify both hotkey and EVM address signatures, run: python signer/verify-proo
 
 ## Example Commands
 
-- To generate proof for hotkey, run: python signer/generate-proof.py --hotkey
-- To generate proof for Ethereum address, run: python signer/generate-proof.py --eth
-- To verify proof for hotkey, run: python signer/verify-proof.py --hotkey
-- To verify proof for Ethereum address, run: python signer/verify-proof.py --eth
+- To generate proof for hotkey, run: `python signer/generate-proof.py --hotkey`
+- To generate proof for Ethereum address, run: `python signer/generate-proof.py --eth`
+- To verify proof for hotkey, run: `python signer/verify-proof.py --hotkey`
+- To verify proof for Ethereum address, run: `python signer/verify-proof.py --eth`
 
 Ensure you have the necessary Python libraries installed and configured to run the script successfully.
